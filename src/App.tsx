@@ -22,7 +22,7 @@ export const App = () => {
 
     return (
         <Layout style={{ minHeight: "100vh" }}>
-            <Sider theme="light" width={260} style={{ padding: "15px" }}>
+            <Sider theme="light" width={260} style={{ padding: "18px" }}>
                 <Space direction="vertical" align="end" className="sider-space">
                     <SpellForm spellSkillState={spellSkillState} setSpellSkillState={setSpellSkillState} />
 
