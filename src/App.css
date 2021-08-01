@@ -1,38 +1,22 @@
-.App {
-  text-align: center;
+@import '~antd/dist/antd.css';
+
+.ant-form-item {
+    margin-bottom: 12px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ant-form-horizontal .ant-form-item-label {
+    flex-grow: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ant-form-horizontal .ant-form-item-control {
+    flex: 0 auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.sider-space {
+    width: 100%;
+    height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sider-space .ant-space-item:first-child {
+    flex-grow: 1;
 }

@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# Lorien Trust Spell List Generator
+
+Generate spell list based on character CS/OS, for use with the Lorien Trust game system
+
+All creative content &copy; [Lorient Trust](https://lorientrust.com/)
+
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "LT Spell List Gen",
+  "name": "Lorien Trust Spell List Generator",
   "icons": [
     {
       "src": "favicon.ico",
