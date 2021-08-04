@@ -1,23 +1,15 @@
 import { createContext, FC, useState } from "react"
+
+import { ISpellSkillContext, ISpellSkillProvider } from "./context-interfaces"
 import { defaultSpellSkillState, ISpellSkillState } from "../interface/spell-skill-state"
 
-interface ISpellSkillContext {
-    spellSkillState: ISpellSkillState
-    setSpellSkills: (newState: ISpellSkillState) => void
-    resetSpellSkills: () => void
-}
-
-export const defaultSpellSkillContext = {
+const defaultSpellSkillContext = {
     spellSkillState: defaultSpellSkillState,
     setSpellSkills: () => {},
     resetSpellSkills: () => {},
 }
 
 export const SpellSkillContext = createContext<ISpellSkillContext>(defaultSpellSkillContext)
-
-interface ISpellSkillProvider {
-    spellSkills: ISpellSkillState
-}
 
 export const SpellSkillProvider: FC<ISpellSkillProvider> = ({ children, spellSkills }) => {
     const [state, setState] = useState(spellSkills || defaultSpellSkillState)
