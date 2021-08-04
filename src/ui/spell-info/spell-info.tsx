@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Card, Space } from "antd"
+import { Card, Modal, Space } from "antd"
 
 import { spellInfoHelpers } from "./spell-info-helpers"
 import { ISpell } from "../../interface/spells"
@@ -15,8 +15,10 @@ export const SpellInfo: FC<ISpellInfoProps> = ({ spell = null, onDismiss }) => {
         return null
     }
 
-    return (
-        <Card title={spell.name} extra={<CloseIcon onClick={onDismiss} />}>
+    const displayType = window.innerWidth >= 768 ? "card" : "modal"
+
+    const spellInfo = (
+        <>
             <Space size="middle" style={{ marginBottom: "1em" }}>
                 <span>
                     <b>Level:</b> {spell.level}
@@ -40,6 +42,30 @@ export const SpellInfo: FC<ISpellInfoProps> = ({ spell = null, onDismiss }) => {
             </p>
 
             <p style={{ whiteSpace: "break-spaces" }}>{spell.description}</p>
-        </Card>
+        </>
     )
+
+    const getDisplay = () => {
+        if (displayType === "card") {
+            return (
+                <Card title={spell.name} extra={<CloseIcon onClick={onDismiss} />}>
+                    {spellInfo}
+                </Card>
+            )
+        }
+
+        return (
+            <Modal
+                title={spell.name}
+                onCancel={onDismiss}
+                visible={true}
+                footer={null}
+                closeIcon={<CloseIcon onClick={onDismiss} />}
+            >
+                {spellInfo}
+            </Modal>
+        )
+    }
+
+    return getDisplay()
 }
