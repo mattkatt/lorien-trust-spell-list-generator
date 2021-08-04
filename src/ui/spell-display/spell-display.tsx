@@ -1,22 +1,28 @@
-import React, { FC, useEffect, useState } from "react"
+import React, { FC, useContext, useEffect, useState } from "react"
 import { Row, Col, Alert } from "antd"
 
 import { ISpell } from "../../interface/spells"
 import { SpellListDisplay } from "./spell-list-display"
 import { SpellInfo } from "../spell-info/spell-info"
-import { ISpellLists } from "../../data/spell-lists"
 import { SpellDivider } from "./spell-divider"
 import { SpellDisplayTitle } from "./spell-display-title"
-
-interface ISpellDisplayProps {
-    spellList: ISpellLists
-}
+import { SpellSkillContext } from "../../context/spell-skill-context"
+import { spellService } from "../../service/spell-service"
+import { emptySpellList, ISpellLists } from "../../data/spell-lists"
 
 type breakpoint = "xs" | "sm" | "md" | "lg"
 
-export const SpellDisplay: FC<ISpellDisplayProps> = ({ spellList }) => {
+export const SpellDisplay: FC = () => {
+    const { spellSkillState } = useContext(SpellSkillContext)
+    const [spellList, setSpellList] = useState<ISpellLists>(emptySpellList)
     const [selectedSpell, setSelectedSpell] = useState<ISpell | null>(null)
     const [size, setSize] = useState<breakpoint>("xs")
+
+    useEffect(() => {
+        const { generateSpellList } = spellService()
+        setSpellList(generateSpellList(spellSkillState))
+    }, [spellSkillState, setSpellList])
+
     const listOne = spellList["1"]
     const listTwo = spellList["2"]
     const listThree = spellList["3"]

@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react"
+import React, { FC, useContext, useEffect } from "react"
 import { Form } from "antd"
 
 import { FormRadio } from "./spell-form-radio"
@@ -6,20 +6,17 @@ import { FormSwitch } from "./spell-form-switch"
 import { spellFormHelpers } from "./spell-form-helpers"
 import { ISpellSkillState } from "../../interface/spell-skill-state"
 import { capitalize } from "../../helpers/helpers"
+import { SpellSkillContext } from "../../context/spell-skill-context"
 
-interface ISpellFormProps {
-    spellSkillState: ISpellSkillState
-    setSpellSkillState: (state: ISpellSkillState) => void
-}
-
-export const SpellForm: FC<ISpellFormProps> = ({ spellSkillState, setSpellSkillState }) => {
+export const SpellForm: FC = () => {
+    const { spellSkillState, setSpellSkills } = useContext(SpellSkillContext)
     const [form] = Form.useForm<ISpellSkillState>()
 
     useEffect(() => {
         form.setFieldsValue(spellSkillState)
     }, [form, spellSkillState])
 
-    const onFormChange = () => setSpellSkillState(form.getFieldsValue())
+    const onFormChange = () => setSpellSkills(form.getFieldsValue())
 
     const radioNames: Array<"healing" | "corruption" | "incantation" | "spellcasting" | "ritual"> = [
         "incantation",
