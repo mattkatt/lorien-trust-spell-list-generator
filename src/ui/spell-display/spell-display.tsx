@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import React, { FC, useEffect, useState } from "react"
 import { Row, Col, Alert } from "antd"
 
 import { ISpell } from "../../interface/spells"
@@ -12,33 +12,63 @@ interface ISpellDisplayProps {
     spellList: ISpellLists
 }
 
+type breakpoint = "xs" | "sm" | "md" | "lg"
+
 export const SpellDisplay: FC<ISpellDisplayProps> = ({ spellList }) => {
     const [selectedSpell, setSelectedSpell] = useState<ISpell | null>(null)
+    const [size, setSize] = useState<breakpoint>("xs")
     const listOne = spellList["1"]
     const listTwo = spellList["2"]
     const listThree = spellList["3"]
 
+    useEffect(() => {
+        const onResize = () => {
+            let width = window.innerWidth
+            let newSize: breakpoint
+
+            if (width >= 992) {
+                newSize = "lg"
+            } else if (width >= 768) {
+                newSize = "md"
+            } else if (width >= 576) {
+                newSize = "sm"
+            } else {
+                newSize = "xs"
+            }
+
+            if (newSize !== size) {
+                setSize(newSize)
+            }
+        }
+
+        window.addEventListener("resize", onResize)
+
+        return () => {
+            window.removeEventListener("resize", onResize)
+        }
+    }, [size])
+
     return (
-        <Row style={{ margin: "15px" }} gutter={16}>
+        <Row style={{ margin: "15px", maxWidth: "1200px" }} gutter={16}>
             <Col hidden={listOne.length > 0} span={24}>
                 <Alert message="Select a spell list to begin" />
             </Col>
 
-            <Col hidden={listOne.length <= 0} span={7}>
+            <Col hidden={listOne.length <= 0} sm={23} md={11} lg={7}>
                 <SpellDisplayTitle>Level One</SpellDisplayTitle>
                 <SpellListDisplay spells={listOne} onSelect={setSelectedSpell} />
             </Col>
 
-            <SpellDivider hidden={listTwo.length <= 0} />
+            <SpellDivider hidden={["xs", "sm"].includes(size) || listTwo.length <= 0} />
 
-            <Col hidden={listTwo.length <= 0} span={7}>
+            <Col hidden={listTwo.length <= 0} sm={23} md={11} lg={7}>
                 <SpellDisplayTitle>Level Two</SpellDisplayTitle>
                 <SpellListDisplay spells={listTwo} onSelect={setSelectedSpell} />
             </Col>
 
-            <SpellDivider hidden={listThree.length <= 0} />
+            <SpellDivider hidden={["xs", "sm", "md"].includes(size) || listThree.length <= 0} />
 
-            <Col hidden={listThree.length <= 0} span={7}>
+            <Col hidden={listThree.length <= 0} sm={23} md={11} lg={7}>
                 <SpellDisplayTitle>Level Three</SpellDisplayTitle>
                 <SpellListDisplay spells={listThree} onSelect={setSelectedSpell} />
             </Col>
