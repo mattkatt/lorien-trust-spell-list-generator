@@ -19,26 +19,26 @@ export const SpellDisplay: FC<ISpellDisplayProps> = ({ spellList }) => {
     const listThree = spellList["3"]
 
     return (
-        <Row style={{ margin: "15px" }} gutter={16}>
+        <Row style={{ margin: "15px" }} gutter={16} justify="space-between">
             <Col hidden={listOne.length > 0} span={24}>
                 <Alert message="Select a spell list to begin" />
             </Col>
 
-            <Col hidden={listOne.length <= 0}>
+            <Col hidden={listOne.length <= 0} span={7}>
                 <SpellDisplayTitle>Level One</SpellDisplayTitle>
                 <SpellListDisplay spells={listOne} onSelect={setSelectedSpell} />
             </Col>
 
             <SpellDivider hidden={listTwo.length <= 0} />
 
-            <Col hidden={listTwo.length <= 0}>
+            <Col hidden={listTwo.length <= 0} span={7}>
                 <SpellDisplayTitle>Level Two</SpellDisplayTitle>
                 <SpellListDisplay spells={listTwo} onSelect={setSelectedSpell} />
             </Col>
 
             <SpellDivider hidden={listThree.length <= 0} />
 
-            <Col hidden={listThree.length <= 0}>
+            <Col hidden={listThree.length <= 0} span={7}>
                 <SpellDisplayTitle>Level Three</SpellDisplayTitle>
                 <SpellListDisplay spells={listThree} onSelect={setSelectedSpell} />
             </Col>
