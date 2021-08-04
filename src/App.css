@@ -12,6 +12,15 @@
     flex: 0 auto;
 }
 
+.ant-layout-sider-children {
+  overflow: hidden;
+}
+
+.ant-layout-sider-zero-width-trigger {
+    top: auto;
+    bottom: 13px;
+}
+
 .sider-space {
     width: 100%;
     height: 100%;
