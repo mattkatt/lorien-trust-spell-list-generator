@@ -15,25 +15,26 @@ export const SpellInfo: FC<ISpellInfoProps> = ({ spell = null, onDismiss }) => {
         return null
     }
 
-    const displayType = window.innerWidth >= 768 ? "card" : "modal"
+    const isCard = window.innerWidth >= 992
 
     const spellInfo = (
         <>
-            <Space size="middle" style={{ marginBottom: "1em" }}>
+            <Space size="middle" style={{ marginBottom: "1em", maxWidth: "100%", flexWrap: "wrap" }}>
                 <span>
-                    <b>Level:</b> {spell.level}
+                    <b>Level:</b> <br hidden={isCard} /> {spell.level}
                 </span>
                 <span>
-                    <b>Range:</b> {spellInfoHelpers.getSpellRange(spell.range)}
+                    <b>Range:</b> <br hidden={isCard} /> {spellInfoHelpers.getSpellRange(spell.range)}
                 </span>
                 <span>
-                    <b>Class:</b> {spellInfoHelpers.getSpellClass(spell.class)}
+                    <b>Class:</b> <br hidden={isCard} /> {spellInfoHelpers.getSpellClass(spell.class)}
                 </span>
                 <span>
-                    <b>Characteristic:</b> {spellInfoHelpers.getSpellChar(spell.characteristic)}
+                    <b>Characteristic:</b> <br hidden={isCard} />{" "}
+                    {spellInfoHelpers.getSpellChar(spell.characteristic)}
                 </span>
                 <span>
-                    <b>Duration:</b> {spellInfoHelpers.getSpellDuration(spell.duration)}
+                    <b>Duration:</b> <br hidden={isCard} /> {spellInfoHelpers.getSpellDuration(spell.duration)}
                 </span>
             </Space>
 
@@ -46,7 +47,7 @@ export const SpellInfo: FC<ISpellInfoProps> = ({ spell = null, onDismiss }) => {
     )
 
     const getDisplay = () => {
-        if (displayType === "card") {
+        if (isCard) {
             return (
                 <Card title={spell.name} extra={<CloseIcon onClick={onDismiss} />}>
                     {spellInfo}
