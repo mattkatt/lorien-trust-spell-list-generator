@@ -38,9 +38,19 @@ export const App = () => {
                     <SpellDisplay spellList={spellList} />
                 </Content>
 
-                <Footer>
-                    Creative Content &copy; <a href="https://lorientrust.com/">Lorien Trust</a> | App by{" "}
-                    <a href="https://github.com/mattkatt">Matt Evans</a>
+                <Footer
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        flexWrap: "wrap",
+                    }}
+                >
+                    <span>
+                        Creative Content &copy; <a href="https://lorientrust.com/">Lorien Trust</a> | App by{" "}
+                        <a href="https://github.com/mattkatt">Matt Evans</a>
+                    </span>
+                    <Button onClick={() => alert("Print function not yet enabled")}>Print</Button>
                 </Footer>
             </Layout>
         </Layout>
