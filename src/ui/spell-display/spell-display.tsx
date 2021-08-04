@@ -19,7 +19,7 @@ export const SpellDisplay: FC<ISpellDisplayProps> = ({ spellList }) => {
     const listThree = spellList["3"]
 
     return (
-        <Row style={{ margin: "15px" }} gutter={16} justify="space-between">
+        <Row style={{ margin: "15px" }} gutter={16}>
             <Col hidden={listOne.length > 0} span={24}>
                 <Alert message="Select a spell list to begin" />
             </Col>
