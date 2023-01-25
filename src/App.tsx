@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Layout, Button } from "antd"
 
 import { defaultSpellSkillState } from "./interface/spell-skill-state"
@@ -11,6 +11,7 @@ import { AppHeader, AppFooter } from "./ui/app"
 import "./App.css"
 
 export const App = () => {
+    const [printMode, setPrintMode] = useState(false)
     const { Content } = Layout
 
     return (
@@ -24,7 +25,7 @@ export const App = () => {
                     </SpellSkillConsumer>
                 </SidePanel>
 
-                <Layout>
+                <Layout className={printMode ? "printable" : undefined}>
                     <Content>
                         <AppHeader />
                         <SpellDisplay />
@@ -36,7 +37,7 @@ export const App = () => {
                             <a href="https://github.com/mattkatt">Matt Evans</a>
                         </span>
 
-                        <Button onClick={() => alert("Print function not yet enabled")}>Print</Button>
+                        <Button onClick={() => setPrintMode(!printMode)}>Print Mode</Button>
                     </AppFooter>
                 </Layout>
             </Layout>

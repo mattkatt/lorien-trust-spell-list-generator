@@ -9,3 +9,7 @@ export interface ISpellSkillContext {
 export interface ISpellSkillProvider {
     spellSkills: ISpellSkillState
 }
+
+export interface IPrintModeProvider {
+    printMode: boolean
+}

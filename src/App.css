@@ -29,3 +29,7 @@
 .sider-space .ant-space-item:first-child {
     flex-grow: 1;
 }
+
+.printable {
+    background: #fff !important;
+}
