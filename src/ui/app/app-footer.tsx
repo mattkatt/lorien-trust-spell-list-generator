@@ -10,6 +10,7 @@ export const AppFooter: FC = ({ children }) => {
                 justifyContent: "space-between",
                 flexWrap: "wrap",
             }}
+            className={"no-print"}
         >
             {children}
         </Layout.Footer>

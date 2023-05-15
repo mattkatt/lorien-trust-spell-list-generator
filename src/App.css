@@ -33,3 +33,27 @@
 .printable {
     background: #fff !important;
 }
+
+.printable .ant-row {
+    display: flex;
+}
+
+.printable .ant-col {
+    flex: 0 0 153pt !important;
+    border: 1px dashed #adadad;
+    display: inline-block;
+    height: 243pt !important;
+    width: 153pt !important;
+    font-size: 7pt;
+}
+
+.printable .ant-col h2 {
+    margin: 0 !important;
+    text-align: center;
+}
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}

@@ -17,6 +17,7 @@ export const SidePanel: FC = ({ children }) => {
                 width={260}
                 collapsedWidth={0}
                 trigger={<CollapseIcon collapsed={isCollapsed} />}
+                className={"no-print"}
             >
                 <Space
                     direction="vertical"

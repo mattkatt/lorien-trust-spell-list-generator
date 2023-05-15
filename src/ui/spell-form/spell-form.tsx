@@ -51,18 +51,26 @@ export const SpellForm: FC = () => {
 
     return (
         <Form form={form} name="Spell CS/OS" initialValues={spellSkillState} onChange={onFormChange}>
-            {radioNames.map((name) => (
-                <FormRadio name={name} state={spellSkillState} />
+            {radioNames.map((name, index) => (
+                <FormRadio key={index} name={name} state={spellSkillState} />
             ))}
 
-            {switchNames.map((name) => {
+            {switchNames.map((name, index) => {
                 const hiddenFunc = spellFormHelpers[`is${capitalize(name)}Hidden`]
 
                 if (typeof hiddenFunc !== "function") {
                     throw Error(`"is${capitalize(name)}Hidden" is not a function`)
                 }
 
-                return <FormSwitch name={name} hidden={hiddenFunc(spellSkillState)} onChange={onFormChange} />
+                return (
+                    <FormSwitch
+                        key={index}
+                        name={name}
+                        value={form.getFieldValue(name)}
+                        hidden={hiddenFunc(spellSkillState)}
+                        onChange={onFormChange}
+                    />
+                )
             })}
         </Form>
     )
