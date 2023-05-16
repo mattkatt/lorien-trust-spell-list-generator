@@ -10,5 +10,5 @@ export const SpellDivider: FC<ISpellDividerProps> = ({ hidden }) => {
         return null
     }
 
-    return <Divider type="vertical" orientation="center" style={{ height: "auto" }} />
+    return <Divider type="vertical" orientation="center" style={{ height: "auto" }} className={"no-print"} />
 }
