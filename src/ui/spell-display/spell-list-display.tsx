@@ -7,10 +7,12 @@ interface ISpellListDisplayProps {
 }
 
 export const SpellListDisplay: FC<ISpellListDisplayProps> = ({ spells, onSelect }) => {
+
+
     return (
         <ul style={{ paddingLeft: "5px", listStyle: "none" }}>
             {spells.map((spell, index) => (
-                <li key={index} onClick={() => onSelect(spell)}>
+                <li key={index} className="spell-list-display-item" onClick={() => onSelect(spell)}>
                     <b>{spell.name}</b> - ({spell.range}, {spell.class}, {spell.characteristic}, {spell.duration})
                 </li>
             ))}

@@ -30,6 +30,10 @@
     flex-grow: 1;
 }
 
+.spell-list-display-item:hover {
+    text-decoration: underline;
+}
+
 .printable {
     background: #fff !important;
 }
