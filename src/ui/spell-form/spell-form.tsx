@@ -18,7 +18,7 @@ export const SpellForm: FC = () => {
 
     const onFormChange = () => setSpellSkills(form.getFieldsValue())
 
-    const radioNames: Array<"healing" | "corruption" | "incantation" | "spellcasting" | "ritual"> = [
+    const radioNames: Array<keyof ISpellSkillState> = [
         "incantation",
         "spellcasting",
         "healing",
@@ -26,7 +26,7 @@ export const SpellForm: FC = () => {
         "ritual",
     ]
 
-    const switchNames = [
+    const switchNames: Array<keyof ISpellSkillState> = [
         "highCounter",
         "highMagic",
         "lightIncantation",
@@ -52,7 +52,7 @@ export const SpellForm: FC = () => {
     return (
         <Form form={form} name="Spell CS/OS" initialValues={spellSkillState} onChange={onFormChange}>
             {radioNames.map((name, index) => (
-                <FormRadio key={index} name={name} state={spellSkillState} />
+                <FormRadio key={index} name={name} />
             ))}
 
             {switchNames.map((name, index) => {

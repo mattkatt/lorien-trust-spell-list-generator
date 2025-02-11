@@ -2,7 +2,11 @@ import React, { FC, useState } from "react"
 import { Layout, Space } from "antd"
 import { CollapseIcon } from "../icons/collapse-icon"
 
-export const SidePanel: FC = ({ children }) => {
+interface SidePanelProps {
+    children: React.ReactNode
+}
+
+export const SidePanel: FC<SidePanelProps> = ({ children }) => {
     const { Sider } = Layout
     const [isCollapsed, setCollapsed] = useState(false)
 

@@ -1,25 +1,26 @@
-import React, { FC } from "react"
+import React, { FC, useContext } from "react"
 import { Form, Radio } from "antd"
 
 import { ISpellSkillState } from "../../interface/spell-skill-state"
 import { camelToReadable } from "../../helpers/helpers"
+import { SpellSkillContext } from "../../context/spell-skill-context"
 
 interface IFormRadio {
-    name: "healing" | "corruption" | "incantation" | "spellcasting" | "ritual"
-    state: ISpellSkillState
+    name: keyof ISpellSkillState
 }
 
-export const FormRadio: FC<IFormRadio> = ({ name, state }) => {
+export const FormRadio: FC<IFormRadio> = ({ name }) => {
+    const { spellSkillState } = useContext(SpellSkillContext)
     const isRitual = name === "ritual"
     const isRitualDisabled =
-        state.healing < 1 && state.corruption < 1 && state.incantation < 1 && state.spellcasting < 1
+        spellSkillState.healing < 1 && spellSkillState.corruption < 1 && spellSkillState.incantation < 1 && spellSkillState.spellcasting < 1
 
     const levelTwoDisabled = () => {
-        if (state[name] >= 2 || isRitual) {
+        if (spellSkillState[name] >= 2 || isRitual) {
             return false
         }
 
-        return state.healing >= 2 || state.corruption >= 2 || state.incantation >= 2 || state.spellcasting >= 2
+        return spellSkillState.healing >= 2 || spellSkillState.corruption >= 2 || spellSkillState.incantation >= 2 || spellSkillState.spellcasting >= 2
     }
 
     if (isRitual && isRitualDisabled) {

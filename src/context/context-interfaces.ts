@@ -1,4 +1,5 @@
 import { ISpellSkillState } from "../interface/spell-skill-state"
+import React from "react"
 
 export interface ISpellSkillContext {
     spellSkillState: ISpellSkillState
@@ -8,8 +9,10 @@ export interface ISpellSkillContext {
 
 export interface ISpellSkillProvider {
     spellSkills: ISpellSkillState
+    children: React.ReactNode
 }
 
 export interface IPrintModeProvider {
     printMode: boolean
+    children: React.ReactNode
 }

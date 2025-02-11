@@ -1,7 +1,11 @@
 import React, { FC } from "react"
 import { Layout } from "antd"
 
-export const AppFooter: FC = ({ children }) => {
+interface IAppFooterProps {
+    children: React.ReactNode
+}
+
+export const AppFooter: FC<IAppFooterProps> = ({ children }) => {
     return (
         <Layout.Footer
             style={{

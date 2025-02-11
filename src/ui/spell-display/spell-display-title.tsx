@@ -1,5 +1,9 @@
 import React, { FC } from "react"
 
-export const SpellDisplayTitle: FC = ({ children }) => {
+interface SpellDisplayTitleProps {
+    children: React.ReactNode
+}
+
+export const SpellDisplayTitle: FC<SpellDisplayTitleProps> = ({ children }) => {
     return <h2 style={{ marginLeft: "28px" }}>{children}</h2>
 }

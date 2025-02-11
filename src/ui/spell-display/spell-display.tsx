@@ -12,7 +12,9 @@ import { emptySpellList, ISpellLists } from "../../data/spell-lists"
 
 type breakpoint = "xs" | "sm" | "md" | "lg"
 
-export const SpellDisplay: FC = () => {
+interface SpellDisplayProps {}
+
+export const SpellDisplay: FC<SpellDisplayProps> = () => {
     const { spellSkillState } = useContext(SpellSkillContext)
     const [spellList, setSpellList] = useState<ISpellLists>(emptySpellList)
     const [selectedSpell, setSelectedSpell] = useState<ISpell | null>(null)
